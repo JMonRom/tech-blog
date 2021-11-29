@@ -1,6 +1,6 @@
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
-const { Model, DataTypes } = require('sequelize');
 
 class User extends Model {
   checkPassword(loginPW) {
@@ -25,9 +25,9 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [5],
-      },
-    },
+        len: [5]
+      }
+    }
   },
   {
     hooks: {
@@ -38,13 +38,13 @@ User.init(
       async beforeUpdate(updatedUserData) {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
-      },
+      }
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'user'
   }
 );
 
