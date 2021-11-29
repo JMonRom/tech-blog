@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primaryColor: #102133;
+  --secondaryColor: #F1F0DC;
+  --thirdColor: #DCC275;
+  --fourthColor: #A0A099;
+
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--fourthColor);
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  transition: color .1s;
+  color: var(--secondaryColor);
+}
+
+a:hover {
+  color: var(--fourthColor);
+}
+
