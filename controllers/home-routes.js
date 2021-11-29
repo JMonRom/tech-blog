@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
     const posts = dbPostData.map(post => post.get({ plain: true }));
     res.render('homepage', {
       posts,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
   })
   .catch(err => {
@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if(req.session.logged_in){
+  if(req.session.loggedIn){
     res.redirect('/');
     return;
   }
@@ -81,13 +81,14 @@ router.get('/post/:id', (req,res) => {
   })
   .then(dbPostData => {
     if(!dbPostData) {
-      res.status(500).json(err)
+      res.status(404).json({ message: 'Nothing found with this ID'});
+      return;
     }
     const post = dbPostData.get({ plain: true });
 
-    res.render('homepage', {
+    res.render('single-post', {
       post,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
   })
   .catch(err => {
