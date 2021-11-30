@@ -7,6 +7,7 @@
   --secondaryColor: #F1F0DC;
   --thirdColor: #DCC275;
   --fourthColor: #A0A099;
+  --fifthColor: #3A887B;
 
 }
 
@@ -14,22 +15,85 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  color: var(--fourthColor);
+  color: var(--secondaryColor);
   font-family: sans-serif;
+  background-color: var(--fourthColor);
 }
 
 a {
   text-decoration: none;
   transition: color .1s;
   color: var(--secondaryColor);
+  font-weight: bold;
 }
 
 a:hover {
-  color: var(--fourthColor);
+  color: var(--thirdColor);
+}
+
+header a:hover {
+  color: var(--thirdColor);
 }
 
 #home-title {
-  color: var(--secondaryColor);
+  color: var(--thirdColor);
   background-color: var(--primaryColor);
+  font-size: 2.67rem;
+  padding: 0.625rem;
+  display: inline-block;
+  border-radius: 0.438rem;
+  box-shadow: 2px 2px var(--fourthColor);
 }
 
+button {
+  background-color: var(--fifthColor);
+  border: 0;
+  padding: 1%;
+  color: var(--secondaryColor);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: var(--thirdColor);
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+}
+
+header {
+  background-color: var(--fifthColor);
+  border-bottom: 1px solid var(--fourthColor);
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  padding: 0 2%;
+  word-spacing: 1.875rem;
+}
+
+main {
+  flex: 1;
+  padding: 2% 4%;
+  background-color: var(--fourthColor);
+}
+
+.postHead {
+  padding: .125rem;
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: .5%;
+}
+
+.title {
+  font-size: 1.563rem;
+}
+
+.post-text{
+  background-color: var(--fifthColor);
+}
