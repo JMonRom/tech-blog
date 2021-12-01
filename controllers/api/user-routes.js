@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password']},
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
@@ -27,12 +27,14 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'created_at']
       }
     ]
-  }).then(dbUserData => {
-    if(!dbUserData) {
-      res.status(404).json({ message: 'No user with this ID'});
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No User found with this id' });
       return;
     }
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
