@@ -1,18 +1,18 @@
 {{#if posts.length}}
 <section>
-  <h2> Your Posts</h2>
-  <ol>
+  <h2>Your Posts</h2>
+  <ol class="post-list">
     {{#each posts as |post|}}
     <li>
-      {{> dashboardPostInfo post}}
+      {{> dashboard-post-info post}}      
     </li>
     {{/each}}
   </ol>
 </section>
 {{else}}
 <section>
-  <h3>You have no posts to show</h3>
+  <h3>You have no post to show yet</h3>
 </section>
 {{/if}}
 
-<button type="submit"><a href="/dashboard/new">Add A New Post</a></button>
+<button type="submit"><a href="/dashboard/new">Add New Post</a></button>
