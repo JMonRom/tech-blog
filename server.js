@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 3001;
 
 //setup session
 const sess = {
-  secret: 'supersecretsessionsecrettext',
-  cookie: { maxAge: 180000},
+  secret: 'Super secret secret',
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -37,6 +37,7 @@ app.use(session(sess));
 //use routes
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now Listening on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+  sequelize.sync({ force: false });
 });
