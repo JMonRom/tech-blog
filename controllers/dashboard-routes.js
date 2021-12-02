@@ -24,15 +24,19 @@ router.get('/', withAuth, (req, res) => {
         }
       }
     ]
-  }).then(dbPostData => {
+  })
+  .then(dbPostData => {
+    //serialize the data before passing to the template
     const posts = dbPostData.map(post => post.get({ plain: true }));
     res.render('dashboard', { posts, loggedIn: true });
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
 });
 
+//get a single post
 router.get('/edit/:id', withAuth, (req, res) => {
   Post.findOne({
     where: {
@@ -53,26 +57,28 @@ router.get('/edit/:id', withAuth, (req, res) => {
         }
       }
     ]
-  }).then(dbPostData => {
-    if(!dbPostData) {
-      res.status(404).json({ message: 'Nothing found with this ID'});
-      return;
-    }
-    const post = dbPostData.get({ plain: true });
-    res.render('edit-post', {
-      post, 
-      loggedIn: req.session.loggedIn
-    });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      //serialize the data
+      const post = dbPostData.get({ plain: true });
+      // pass to the template
+      res.render('edit-post', {
+        post,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get('/new', (req, res) => {
   res.render('new-post');
 });
-
 
 module.exports = router;

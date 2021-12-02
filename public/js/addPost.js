@@ -15,11 +15,11 @@ async function newFormHandler(event) {
     }
   });
 
-  if(response.ok) {
+  if (response.ok) {
     document.location.replace('/dashboard');
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('.newFormPost').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

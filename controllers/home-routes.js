@@ -7,13 +7,13 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'title',
-      'post_text',
-      'created_at'
+      "post_text",
+      'created_at'      
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id','comment_text','post_id','user_id','created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -25,29 +25,29 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    // Serialize data so the template can read it
-  .then(dbPostData => {
-    const posts = dbPostData.map(post => post.get({ plain: true }));
-    res.render('homepage', {
-      posts,
-      loggedIn: req.session.loggedIn
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      // pass a single post object into the homepage template
+      res.render('homepage', { 
+        posts,
+        loggedIn: req.session.loggedIn 
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
 });
 
 router.get('/login', (req, res) => {
-  if(req.session.loggedIn){
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
   res.render('login');
 });
 
-router.get('/post/:id', (req,res) => {
+router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
@@ -80,14 +80,16 @@ router.get('/post/:id', (req,res) => {
     ]
   })
   .then(dbPostData => {
-    if(!dbPostData) {
-      res.status(404).json({ message: 'Nothing found with this ID' });
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No Post found with this id' });
       return;
     }
+    //serialize the data
     const post = dbPostData.get({ plain: true });
 
+    //pass data to the template
     res.render('single-post', {
-      post,
+      post, 
       loggedIn: req.session.loggedIn
     });
   })
