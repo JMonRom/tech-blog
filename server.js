@@ -12,10 +12,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//setup session
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
+  secret: 'supersecretsession',
+  cookie: { maxAge: 180000},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -34,10 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session(sess));
 
-//use routes
 app.use(routes);
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-  sequelize.sync({ force: false });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now Listening on ${PORT}`));
 });
