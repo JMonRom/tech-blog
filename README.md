@@ -8,11 +8,11 @@
 
   This homework had me refactor code so that a user is able to view, create, and track daily workouts. When the user navigates through the page they are able to log multiple exercises on a given day and also record the name, type, weight, sets, reps, and duration of exercise. This homework was worked on as a group with Jericho, Daniel, and Khoa which provided a quick solution to this problem. Although it still presented some challenges such as making the add exercise buttons function like they were intended to with the front end. We noticed that our routes were set up wrong and I had an issue with my schema because of syntax and mismatching entries. 
 
-  Being able to work on a homework like this was useful because it provided more information on how MongoDB works and the uses with some functions that are available. 
+  Being able to work on a homework like this was useful because it provided more information on how MongoDB works and the uses with some functions that are available. However, the deploying process to Heroku was difficult because I kept getting a lot of errors such as "Internal Service Error" or the build failing amongst many errors. It took about 2 hours to figure out the solution which involved placing the correct connection.js and server.js code as well as enabling the JawsDB Add-On. 
 
   Here is a link to the deployed page: 
 
-  [MVC Deployed Link]()
+  [MVC Deployed Link](https://mvcblog-21.herokuapp.com/)
 
   Here is a link to the GitHub repo for the Workout Tracker:
 
@@ -20,7 +20,7 @@
 
   Here is a screenshot of the app running in command line:
 
-  [PNG of MVC Blog](./)
+  [PNG of MVC Blog](./assets/mvcBlog.png)
 
   ## Table of Contents
   * [License](#license)
