@@ -94,8 +94,24 @@ main {
   font-size: 1.563rem;
 }
 
+.post {
+  line-height: 150%;
+  margin: 20px;
+  border: solid;
+}
+
+.post-head {
+  padding: 2px;
+}
+
 .post-text{
   background-color: var(--fifthColor);
+  margin-top: 5px;
+  padding: 20px;
+}
+
+.post-list {
+  list-style: none;
 }
 
 footer {
