@@ -10,6 +10,11 @@
 
   Being able to work on a homework like this was useful because it provided more information on how MongoDB works and the uses with some functions that are available. However, the deploying process to Heroku was difficult because I kept getting a lot of errors such as "Internal Service Error" or the build failing amongst many errors. It took about 2 hours to figure out the solution which involved placing the correct connection.js and server.js code as well as enabling the JawsDB Add-On. 
 
+  Resource(s) used :
+
+  [Using Handlebars](https://handlebarsjs.com/guide/#custom-helpers)
+
+
   Here is a link to the deployed page: 
 
   [MVC Deployed Link](https://mvcblog-21.herokuapp.com/)
@@ -49,9 +54,3 @@
   https://github.com/JMonRom
 
   jmontes8686@gmail.com
-
-https://handlebarsjs.com/guide/#custom-helpers
-
-https://stackoverflow.com/questions/15989529/unknown-column-in-field-list-but-column-does-exist/43632412
-
-Sublime Text
